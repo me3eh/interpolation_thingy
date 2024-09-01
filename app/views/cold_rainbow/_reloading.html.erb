@@ -1,0 +1,17 @@
+<div data-controller="switch-between-amount">
+  <label for="first">First color</label>
+  <input type="color" id="first" name="first" value="<%= @first_color %>" data-switch-between-amount-target="first" autocomplete="off" >
+  <label for="second">Second color</label>
+  <input type="color" id="second" name="second" value="<%= @second_color %>" data-switch-between-amount-target="second" autocomplete="off" >
+  <label for="amount">Amount of colors</label>
+  <input data-switch-between-amount-target="input" id="amount" name="amount" value=<%= @amount %> autocomplete="off" />
+  <button data-action="click->switch-between-amount#rerender_without_contrast">Reload without contrast</button>
+  <button data-action="click->switch-between-amount#rerender">Reload</button>
+</div>
+<% @colors.each do |color| %>
+  <div style="background-color: <%= color %>; color: <%= contrast_color(color) %> ;padding-bottom: 0;">
+    <p style="margin: 0">
+      <%= color %>
+    </p>
+  </div>
+<%end %>
